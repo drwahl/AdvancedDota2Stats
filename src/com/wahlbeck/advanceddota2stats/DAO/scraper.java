@@ -1,15 +1,7 @@
 public class scraper {
 
-	public void authenticate() {
-		System.out.println("I AUTHED!");
-	}
-
 	public void getMatchHistory() {
-		System.out.println("I SCRAPED!");
-	}
-
-	public void updatedb() {
-		System.out.println("I UPDATED THE DB!");
+		System.out.println("GET https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=<steamAPIAccessKey>&account_id=<userID> -- returns json");
 	}
 
 }
