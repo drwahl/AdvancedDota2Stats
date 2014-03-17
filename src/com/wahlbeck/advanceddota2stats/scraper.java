@@ -4,8 +4,12 @@ public class scraper {
 		System.out.println("I AUTHED!");
 	}
 
-	public void scrape() {
+	public void getMatchHistory() {
 		System.out.println("I SCRAPED!");
+	}
+
+	public void updatedb() {
+		System.out.println("I UPDATED THE DB!");
 	}
 
 }
