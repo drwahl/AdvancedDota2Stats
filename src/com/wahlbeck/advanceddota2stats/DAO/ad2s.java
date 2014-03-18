@@ -1,4 +1,4 @@
-/*package com.wahlbeck.advanceddota2stats;*/
+package com.wahlbeck.advanceddota2stats.DAO;
 
 import java.io.FileInputStream;
 import java.io.IOException;

@@ -1,3 +1,5 @@
+package com.wahlbeck.advanceddota2stats.DAO;
+
 import java.net.*;
 import java.io.*;
 
