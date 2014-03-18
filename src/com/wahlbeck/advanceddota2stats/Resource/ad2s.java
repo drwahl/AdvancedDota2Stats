@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ad2s {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Properties prop = new Properties();
 		InputStream input = null;
 		try {
