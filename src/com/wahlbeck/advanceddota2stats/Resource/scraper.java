@@ -8,10 +8,12 @@ public class scraper {
 		BufferedReader in = new BufferedReader(
 		new InputStreamReader(urlString.openStream()));
 		String inputLine;
+		/*StringBuilder stringBuilder = new StringBuilder();*/
 		while ((inputLine = in.readLine()) != null)
-				System.out.println(inputLine);
+			/*stringBuilder.append(inputLine);*/
+			System.out.println(inputLine);
 		in.close();
-		System.out.println(apikey);
+		/*System.out.println(stringBuilder);*/
 	}
 
 }
