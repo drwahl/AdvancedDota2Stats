@@ -1,33 +1,23 @@
 package com.wahlbeck.advanceddota2stats.DAO;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+import com.google.gson.Gson;
+import com.wahlbeck.advanceddota2stats.TO.MatchHistoryResultTO;
+import com.wahlbeck.advanceddota2stats.config.ConfigModel;
 
 public class ad2s {
 
 	public static void main(String[] args) throws Exception {
-		Properties prop = new Properties();
-		InputStream input = null;
-		try {
-			//load properties file
-			input = new FileInputStream("config.properties");
-			prop.load(input);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		scraper d2scraper = new scraper();
-		d2scraper.getMatchHistory(prop.getProperty("apikey")); /*returns match history data*/
+		
+		String accountId = "0:42440556";
+		
+		Scraper d2scraper = new Scraper();
+		String jsonResult = d2scraper.getMatchHistory(ConfigModel.getStringValue(ConfigModel.KEY_DOTA2_APIKEY), accountId); /*returns match history data*/
+		
+		MatchHistoryResultTO matchResult = MatchHistoryResultTO.fromJson(jsonResult);
+		Gson g = new Gson();
+		System.out.println(g.toJson(matchResult.getMatches()));
+		
+		
 		dbdriver dbdriver = new dbdriver();
 		dbdriver.updatedb(); /*update db with data from getMatchHistory*/
 	}

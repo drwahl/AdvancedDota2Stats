@@ -10,18 +10,18 @@ import com.google.gson.annotations.SerializedName;
 public class DotaMatchesTO {
 
 	@SerializedName("match_id")
-	String matchID;
+	private String matchID;
 	
 	@SerializedName("match_seq_num")
-	String matchSequenceNum;
+	private String matchSequenceNum;
 	
 	@SerializedName("start_time")
-	String startTime;
+	private String startTime;
 	
 	@SerializedName("lobbyType")
-	int lobbyType;
+	private int lobbyType;
 	
-	MatchPlayersTO players;
+	private MatchPlayersTO[] players;
 
 	public String getMatch_id() {
 		return matchID;
@@ -55,11 +55,11 @@ public class DotaMatchesTO {
 		this.lobbyType = lobby_type;
 	}
 
-	public MatchPlayersTO getPlayers() {
+	public MatchPlayersTO[] getPlayers() {
 		return players;
 	}
 
-	public void setPlayers(MatchPlayersTO players) {
+	public void setPlayers(MatchPlayersTO[] players) {
 		this.players = players;
 	}
 	
@@ -69,22 +69,6 @@ public class DotaMatchesTO {
 				
 		return null;
 		
-	}
-
-	public static DotaMatchesTO fromJson(String json) {
-		DotaMatchesTO retVal = null;
-		GsonBuilder gb = new GsonBuilder();
-		Gson g = gb.create();
-		JsonParser jp = new JsonParser();
-		JsonObject jo = (JsonObject) jp.parse(json);
-		JsonElement j2 = jp.parse(json);
-		if (jo.has("result")) {
-			j2= jo.get("result");
-		}
-		if (j2 != null) {
-			retVal = g.fromJson(j2, DotaMatchesTO.class);
-		}
-		return retVal;
 	}
 	
 }

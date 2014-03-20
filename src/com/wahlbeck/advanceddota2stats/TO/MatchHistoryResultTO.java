@@ -1,5 +1,10 @@
 package com.wahlbeck.advanceddota2stats.TO;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.annotations.SerializedName;
 
 public class MatchHistoryResultTO {
@@ -15,7 +20,7 @@ public class MatchHistoryResultTO {
 	@SerializedName("results_remaining")
 	private int resultsRemaining;
 	
-	private DotaMatchesTO matches;
+	private DotaMatchesTO[] matches;
 
 	public int getStatus() {
 		return status;
@@ -24,37 +29,54 @@ public class MatchHistoryResultTO {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
-	public int getNum_results() {
+	
+	public int getNumberResults() {
 		return numberResults;
 	}
 
-	public void setNum_results(int num_results) {
-		this.numberResults = num_results;
+	public void setNumberResults(int numberResults) {
+		this.numberResults = numberResults;
 	}
-
-	public int getTotal_results() {
+	
+	public int getTotalResults() {
 		return totalResults;
 	}
 
-	public void setTotal_results(int total_results) {
-		this.totalResults = total_results;
+	public void setTotalResults(int totalResults) {
+		this.totalResults = totalResults;
 	}
 
-	public int getResults_remaining() {
+	public int getResultsRemaining() {
 		return resultsRemaining;
 	}
 
-	public void setResults_remaining(int results_remaining) {
-		this.resultsRemaining = results_remaining;
+	public void setResultsRemaining(int resultsRemaining) {
+		this.resultsRemaining = resultsRemaining;
 	}
 
-	public DotaMatchesTO getMatches() {
+	public DotaMatchesTO[] getMatches() {
 		return matches;
 	}
-
-	public void setMatches(DotaMatchesTO matches) {
+	
+	public void setMatches(DotaMatchesTO[] matches) {
 		this.matches = matches;
 	}
 
+
+
+	public static MatchHistoryResultTO fromJson(String json) {
+		MatchHistoryResultTO retVal = null;
+		GsonBuilder gb = new GsonBuilder();
+		Gson g = gb.create();
+		JsonParser jp = new JsonParser();
+		JsonObject jo = (JsonObject) jp.parse(json);
+		JsonElement j2 = jp.parse(json);
+		if (jo.has("result")) {
+			j2= jo.get("result");
+		}
+		if (j2 != null) {
+			retVal = g.fromJson(j2, MatchHistoryResultTO.class);
+		}
+		return retVal;
+	}
 }

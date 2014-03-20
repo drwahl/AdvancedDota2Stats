@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 public class MatchPlayersTO {
 	
 	@SerializedName("account_id")
-	String accountID;
+	private String accountID;
 	
 	@SerializedName("player_slot")
-	int playerSlot;
+	private int playerSlot;
 	
 	@SerializedName("hero_id")
-	int heroID;
+	private int heroID;
 
 	public String getAccountID() {
 		return accountID;
