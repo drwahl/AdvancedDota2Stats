@@ -14,7 +14,7 @@ public class Scraper {
 	public String getMatchHistory(String apiKey, String accountId) throws Exception {
 		
 		String sReturn = "";
-		
+
 		try {
 			String baseURL = ConfigModel.getStringValue(ConfigModel.KEY_DOTA2_URI);
 			WebClientHelper wch = new WebClientHelper(baseURL);
