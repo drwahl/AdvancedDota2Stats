@@ -2,7 +2,7 @@
 *.properties
 
 # Package Files #
-*.jar
+#*.jar we are adding jar files, so sue us
 *.war
 *.ear
 /bin
